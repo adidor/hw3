@@ -80,10 +80,21 @@ Node* llfilter(Node* head, Comp pred);
 template <typename Comp>
 Node* llfilter(Node* head, Comp pred)
 {
-    //*********************************************
-    // Provide your implementation below
-    //*********************************************
+ if (head==NULL || head==nullptr){
+     return NULL;
 
+ }
+ else{
+     Node* tempo = llfilter(head->next, pred);
+     if (!pred(head->val)) { 
+        head->next=tempo;
+        return head;
+     }
+     else{ // //    this means it's true so we remove it
+        delete head;
+        return tempo;
+     } 
+ }
 
 }
 
